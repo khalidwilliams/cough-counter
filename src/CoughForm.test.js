@@ -6,16 +6,21 @@ import CoughForm from './CoughForm';
 describe('CoughForm', () => {
   
   test('should render a form on the page', () => {
-    const { getByText, getByRole, debug } = render(<CoughForm/>);
-    debug()
-    expect(getByRole('form').toBeInTheDocument());
-    expect(getByText('New Cough').toBeInTheDocument());
-    expect(getByRole('input').toBeInTheDocument());
-    expect(getByRole('button').toBeInTheDocument());
+    const { queryByRole, getByText, getByRole, debug } = render(<CoughForm/>);
+    expect(queryByRole('form')).toBeInTheDocument();
+    expect(getByText('New Cough')).toBeInTheDocument();
+    expect(getByRole('radio', {name: 'Yes'})).toBeInTheDocument();
+    expect(getByRole('radio', {name: 'No'})).toBeInTheDocument();
+    expect(getByRole('radio', {name: 'Indoor'})).toBeInTheDocument();
+    expect(getByRole('radio', {name: 'Outdoor'})).toBeInTheDocument();
+    expect(getByRole('button', {name:'Add Cough'})).toBeInTheDocument();
   });
 
   test('should render a pre-filled form when appropriate', () => {
   // if props are passed in to the CoughForm, the most recent repsonses should populate
+    const { queryByRole, getByText, getByRole, debug } = render(<CoughForm
+         
+      />);
   });
 
   describe('"productive" input', () => {
