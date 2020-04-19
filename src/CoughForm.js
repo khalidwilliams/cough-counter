@@ -2,23 +2,23 @@ import React, {Component} from 'react';
 
 class CoughForm extends Component {
 
-  revealProductiveFollowUps() {
-    return (
-      <div className="question-wrapper"> 
-        <h3>Mucus Color?</h3>
-      <div className="question-wrapper"> 
-        <h3>Blood?</h3>
-        <div className="radio-container">
-          <input id="blood-yes" type="radio"  name="blood"/>
-          <label htmlFor="blood-yes">Yes</label>
-        </div>
-        <div className="radio-container">
-          <input id="blood-no" type="radio"  name="blood"/>
-          <label htmlFor="blood-no">No</label>
-        </div>
-      </div>
-    );
-  }
+//  revealProductiveFollowUps() {
+//    return (
+//      <div className="question-wrapper"> 
+//        <h3>Mucus Color?</h3>
+//      <div className="question-wrapper"> 
+//        <h3>Blood?</h3>
+//        <div className="radio-container">
+//          <input id="blood-yes" type="radio"  name="blood"/>
+//          <label htmlFor="blood-yes">Yes</label>
+//        </div>
+//        <div className="radio-container">
+//          <input id="blood-no" type="radio"  name="blood"/>
+//          <label htmlFor="blood-no">No</label>
+//        </div>
+//      </div>
+//    )
+//  }
 
   render() {
     return (
