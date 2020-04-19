@@ -10,7 +10,7 @@ const RadioInput = ({heading, options, changeHandler}) => {
   const radioOptions = options.map((option, index) => {
     const checked = lessThanTwoChecked && option.checked ? {defaultChecked: true} : {}; 
     return  (
-      <div key={index}>
+      <div key={index} className="radio-container">
         <label htmlFor={`${heading}-${option.label}`}>{option.label}</label>
         <input 
           type="radio" 

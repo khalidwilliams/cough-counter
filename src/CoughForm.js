@@ -1,6 +1,18 @@
 import React, {Component} from 'react';
+import RadioInput from './RadioInput/RadioInput';
 
 class CoughForm extends Component {
+  constructor() {
+    super();
+    this.yesOrNoOptions= [
+      {label: 'Yes'},
+      {label: 'No'}
+    ];
+    this.indoorOutdoorOptions = [
+      {label: 'Indoor'},
+      {label: 'Outdoor'}
+    ];
+  }
 
 //  revealProductiveFollowUps() {
 //    return (
@@ -19,45 +31,25 @@ class CoughForm extends Component {
 //      </div>
 //    )
 //  }
+  
 
   render() {
     return (
       <>
         <h2 id="new-cough-label">New Cough</h2>
         <form aria-labelledby="new-cough-label">
-          <div className="question-wrapper"> 
-            <h3>Productive?</h3>
-            <div className="radio-container">
-              <input id="productive-yes" type="radio"  name="productive"/>
-              <label htmlFor="productive-yes">Yes</label>
-            </div>
-            <div className="radio-container">
-              <input id="productive-no" type="radio"  name="productive"/>
-              <label htmlFor="productive-no">No</label>
-            </div>
-          </div>
-          <div className="question-wrapper"> 
-            <h3>Wheezing?</h3>
-            <div className="radio-container">
-              <input id="wheezing-yes" type="radio"  name="wheezing"/>
-              <label htmlFor="wheezing-yes">Yes</label>
-            </div>
-            <div className="radio-container">
-              <input id="wheezing-no" type="radio" name="wheezing"/>
-              <label htmlFor="wheezing-no">No</label>
-            </div>
-          </div>
-          <div className="question-wrapper"> 
-            <h3>Location</h3>
-            <div className="radio-container">
-              <input id="location-indoor" type="radio"  name="location"/>
-              <label htmlFor="location-indoor">Indoor</label>
-            </div>
-            <div className="radio-container">
-              <input id="location-outdoor" type="radio"  name="location"/>
-              <label htmlFor="location-outdoor">Outdoor</label>
-            </div>
-          </div>
+          <RadioInput 
+            heading="Productive?"
+            options={this.yesOrNoOptions}
+          />
+          <RadioInput 
+            heading="Wheezing?"
+            options={this.yesOrNoOptions}
+          />
+          <RadioInput 
+            heading="Location?"
+            options={this.indoorOutdoorOptions}
+          />
           <button type="submit">Add Cough</button>
         </form>
       </>
