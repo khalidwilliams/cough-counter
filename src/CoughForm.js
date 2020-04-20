@@ -4,6 +4,14 @@ import RadioInput from './RadioInput/RadioInput';
 class CoughForm extends Component {
   constructor() {
     super();
+    this.state = {
+      productive: '',
+      wheezing: '',
+      location: '',
+      blood: '',
+      mucus: ''
+    }
+
     this.yesOrNoOptions= [
       {label: 'Yes'},
       {label: 'No'}
@@ -14,24 +22,15 @@ class CoughForm extends Component {
     ];
   }
 
-//  revealProductiveFollowUps() {
-//    return (
-//      <div className="question-wrapper"> 
-//        <h3>Mucus Color?</h3>
-//      <div className="question-wrapper"> 
-//        <h3>Blood?</h3>
-//        <div className="radio-container">
-//          <input id="blood-yes" type="radio"  name="blood"/>
-//          <label htmlFor="blood-yes">Yes</label>
-//        </div>
-//        <div className="radio-container">
-//          <input id="blood-no" type="radio"  name="blood"/>
-//          <label htmlFor="blood-no">No</label>
-//        </div>
-//      </div>
-//    )
-//  }
-  
+  formChangeHandler = (e) => {
+    console.log(e.target);
+  }
+ 
+  receiveRadioInput = (answer, name) => {
+    this.setState({[name]: answer});
+  }
+
+
 
   render() {
     return (
@@ -41,14 +40,33 @@ class CoughForm extends Component {
           <RadioInput 
             heading="Productive?"
             options={this.yesOrNoOptions}
+            changeHandler={this.receiveRadioInput}
+            name="productive"
           />
+          {this.state.productive === 'Yes' && (
+            <RadioInput 
+              heading="Blood?"
+              options={this.yesOrNoOptions}
+              changeHandler={this.receiveRadioInput}
+              name="blood"
+            />
+          )}
+          {this.state.productive === "Yes" && (
+            <div className="question-wrapper">
+              This will be a combobox
+            </div>
+          )}
           <RadioInput 
             heading="Wheezing?"
             options={this.yesOrNoOptions}
+            changeHandler={this.receiveRadioInput}
+            name="wheezing"
           />
           <RadioInput 
             heading="Location?"
             options={this.indoorOutdoorOptions}
+            changeHandler={this.receiveRadioInput}
+            name="location"
           />
           <button type="submit">Add Cough</button>
         </form>

@@ -11,7 +11,7 @@ describe('RadioInput', () => {
       {label: 'no'}
     ];
 
-    const { getAllByRole, getByRole } = render(<RadioInput heading={"title"} options={inputOptions} changeHandler={mockedChangeHandler}/>);
+    const { getAllByRole, getByRole } = render(<RadioInput heading={"title"} options={inputOptions} changeHandler={mockedChangeHandler} name="yesOrNo"/>);
 
     const [ yesRadio, noRadio] = getAllByRole('radio');
     const header = getByRole('heading', {name: 'title'});
@@ -24,13 +24,13 @@ describe('RadioInput', () => {
 
 
   it('should take in an initial value for radio inputs', () => {
-    const mockedUpdateFn = jest.fn();
+    const mockedChangeHandler = jest.fn();
     const inputOptions = [
       {label:'yes'},
       {label: 'no', checked:true}
     ];
 
-    const { getAllByRole, getByRole } = render(<RadioInput heading={"title"} options={inputOptions} changeHandler={mockedUpdateFn}/>);
+    const { getAllByRole, getByRole } = render(<RadioInput heading={"title"} options={inputOptions} changeHandler={mockedChangeHandler} name="yesOrNo"/>);
 
     const [ yesRadio, noRadio] = getAllByRole('radio');
 
@@ -40,13 +40,13 @@ describe('RadioInput', () => {
   });
 
   it('should default to empty inputs if it receives multiple "checked" options', () => {
-    const mockedUpdateFn = jest.fn();
+    const mockedChangeHandler = jest.fn();
     const inputOptions = [
       {label:'yes', checked:true},
       {label: 'no', checked:true}
     ];
 
-    const { getAllByRole, getByRole } = render(<RadioInput heading={"title"} options={inputOptions} changeHandler={mockedUpdateFn}/>);
+    const { getAllByRole, getByRole } = render(<RadioInput heading={"title"} options={inputOptions} changeHandler={mockedChangeHandler} name="yesOrNo"/>);
 
     const [ yesRadio, noRadio] = getAllByRole('radio');
     
@@ -57,25 +57,25 @@ describe('RadioInput', () => {
 
 
   it('should update its parent\'s state when its answer changes', () => {
-    const mockedUpdateFn = jest.fn();
+    const mockedChangeHandler = jest.fn();
     const inputOptions = [
       {label:'yes'},
       {label: 'no'}
     ];
 
-    const { getAllByRole, getByRole } = render(<RadioInput heading={"title"} options={inputOptions} changeHandler={mockedUpdateFn}/>);
+    const { getAllByRole, getByRole } = render(<RadioInput heading={"title"} options={inputOptions} changeHandler={mockedChangeHandler} name="yesOrNo"/>);
     const [ yesRadio, noRadio] = getAllByRole('radio');
 
     fireEvent.click(yesRadio);
     
     expect(yesRadio).toBeChecked();
-    expect(mockedUpdateFn).toBeCalledWith('yes');
+    expect(mockedChangeHandler).toBeCalledWith('yes', 'yesOrNo');
 
     fireEvent.click(noRadio);
 
     expect(yesRadio).not.toBeChecked();
     expect(noRadio).toBeChecked();
-    expect(mockedUpdateFn).toBeCalledWith('no');
+    expect(mockedChangeHandler).toBeCalledWith('no', 'yesOrNo');
     
   });
 });

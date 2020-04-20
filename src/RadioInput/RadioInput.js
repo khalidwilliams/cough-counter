@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const RadioInput = ({heading, options, changeHandler}) => {
+const RadioInput = ({heading, name, options, changeHandler}) => {
 
   const initialChecks = options.filter(option => option.checked).length;
   const lessThanTwoChecked = (initialChecks < 2);
@@ -11,11 +11,11 @@ const RadioInput = ({heading, options, changeHandler}) => {
     const checked = lessThanTwoChecked && option.checked ? {defaultChecked: true} : {}; 
     return  (
       <div key={index} className="radio-container">
-        <label htmlFor={`${heading}-${option.label}`}>{option.label}</label>
+        <label htmlFor={`${name}-${option.label}`}>{option.label}</label>
         <input 
           type="radio" 
-          name={heading} 
-          id={`${heading}-${option.label}`}
+          name={name} 
+          id={`${name}-${option.label}`}
           value={option.label}
           {...checked}
         />
@@ -24,7 +24,7 @@ const RadioInput = ({heading, options, changeHandler}) => {
   });
 
   const changeListener = (e) => {
-    changeHandler(e.target.value);
+    changeHandler(e.target.value, e.target.name);
   };
 
   return (
@@ -41,7 +41,8 @@ const RadioInput = ({heading, options, changeHandler}) => {
 RadioInput.propTypes = {
   heading: PropTypes.string,
   options: PropTypes.arrayOf(PropTypes.object),
-  changeHandler: PropTypes.func
+  changeHandler: PropTypes.func,
+  name: PropTypes.string
 }
 
 export default RadioInput;

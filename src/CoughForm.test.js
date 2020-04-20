@@ -42,11 +42,11 @@ describe('CoughForm', () => {
 
     test('should reveal blood option if affirmed', () => {
       // When productive gets value 'yes', the blood field will appear on the page
-      const { getByRole } = render(<CoughForm />);
-      const productiveYesInput = getByRole('radio', {name: 'Yes'});
+      const { getByRole, getAllByRole } = render(<CoughForm />);
+      const productiveYesInput = getAllByRole('radio', {name: 'Yes'})[0];
       fireEvent.click(productiveYesInput);
 
-      expect(getByRole('radio', {name: 'Blood?'})).toBeInTheDocument();
+      expect(getByRole('heading', {name: 'Blood?'})).toBeInTheDocument();
 
     });
 
