@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import RadioInput from './RadioInput/RadioInput';
+import RadioInput from '../RadioInput/RadioInput';
 
 class CoughForm extends Component {
   constructor() {
