@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import RadioInput from '../RadioInput/RadioInput';
+import SelectBox from '../SelectBox/SelectBox';
 
 class CoughForm extends Component {
   constructor() {
@@ -51,11 +52,8 @@ class CoughForm extends Component {
               name="blood"
             />
           )}
-          {this.state.productive === "Yes" && (
-            <div className="question-wrapper">
-              This will be a combobox
-            </div>
-          )}
+          {this.state.productive === "Yes" && <SelectBox options={[{text: 'Yellow', value:'yellow'}, {text: 'Green', value:'green'}]} labelText="Mucus Color"/>        
+          }
           <RadioInput 
             heading="Wheezing?"
             options={this.yesOrNoOptions}

@@ -28,11 +28,11 @@ describe('CoughForm', () => {
   describe('"productive" input', () => {
     test('should reveal mucus option if affirmed', () => {
       // When productive gets value 'yes', the mucus field will appear on the page
-      const { getByRole } = render(<CoughForm />);
-      const productiveYesInput = getByRole('radio', {name: 'Yes'});
+      const { getByRole, getAllByRole } = render(<CoughForm />);
+      const productiveYesInput = getAllByRole('radio', {name: 'Yes'})[0];
       fireEvent.click(productiveYesInput);
 
-      expect(getByRole('menu', {name: 'Mucus Color'})).toBeInTheDocument();
+      expect(getByRole('combobox', {name: 'Mucus Color'})).toBeInTheDocument();
 
     });
 
