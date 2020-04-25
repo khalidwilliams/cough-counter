@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import 'typeface-nunito';
+import 'typeface-montserrat';
 import './index.css';
 import App from './App/App';
 import * as serviceWorker from './serviceWorker';
