@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import DataList from '../DataList/DataList';
 
 const StyledComboBox = styled.input`
   width: 80%;
@@ -23,21 +24,51 @@ const FormLabel = styled.label`
   font-weight: 600;
 `;
 
+
 const SelectBox = ({ options, labelText }) => {
+
+  const [ isFocused, changeFocus ] = useState(false);
+  const [ inputValue, updateValue ] = useState('');
 
   const datalistId = Date.now();
 
+  const datalistRef = React.useRef(null);
+
   const selectableOptions = options.map(({value, text}, i) => (
-    <option value={value} key={i}>{text}</option>
+    <option 
+      value={value} 
+      key={i}
+      onMouseDown={() => {
+        updateValue(value)
+      }}
+      onClick={() => {
+        console.log(value)
+        updateValue(value)
+      }}
+    >{text}</option>
   ));
 
   return (
     <QuestionWrapper className="question-wrapper">
       <FormLabel htmlFor={`datalist-${datalistId}`}>{labelText}</FormLabel>
-      <StyledComboBox id={`datalist-${datalistId}`} role="combobox"/>
-      <datalist id={`datalist-${datalistId}`}>
-        {selectableOptions}
-      </datalist>
+      <StyledComboBox 
+        id={`datalist-${datalistId}`} 
+        role="combobox" 
+        value={inputValue}
+        aria-controls={datalistRef}
+        onClick={() => {console.log(this)}}
+        onChange={(e) => {updateValue(e.target.value)}}
+        onFocus={() => changeFocus(true)} 
+        onBlur={() => changeFocus(false)}/>
+      <DataList 
+        ref={datalistRef}
+        options={options}
+        id={`datalist-${datalistId}`} 
+        updateValue={updateValue}
+        role="listbox"
+        reveal={isFocused}
+        aria-expanded={isFocused}
+     />
     </QuestionWrapper>
   );
 }
