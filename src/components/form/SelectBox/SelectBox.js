@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import DataList from '../DataList/DataList';
+import QuestionWrapper from '../StyledComponents/QuestionWrapper';
+import FormLabel from '../StyledComponents/FormLabel';
 
 const StyledComboBox = styled.input`
   width: 80%;
@@ -13,16 +15,6 @@ const StyledComboBox = styled.input`
   border-radius: 0.5em;
 `;
 
-const QuestionWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-top: .5em;
-`;
-
-const FormLabel = styled.label`
-  font: 0.9em "Nunito" ;
-  font-weight: 600;
-`;
 
 
 const SelectBox = ({ options, labelText }) => {
@@ -50,24 +42,26 @@ const SelectBox = ({ options, labelText }) => {
 
   return (
     <QuestionWrapper className="question-wrapper">
-      <FormLabel htmlFor={`datalist-${datalistId}`}>{labelText}</FormLabel>
+      <h3 id={`datalist-${datalistId}`}>{labelText}</h3>
       <StyledComboBox 
+        aria-labelledBy={`datalist-${datalistId}`}
         id={`datalist-${datalistId}`} 
         role="combobox" 
         value={inputValue}
         aria-controls={datalistRef}
-        onClick={() => {console.log(this)}}
+        aria-expanded={isFocused}
         onChange={(e) => {updateValue(e.target.value)}}
         onFocus={() => changeFocus(true)} 
         onBlur={() => changeFocus(false)}/>
       <DataList 
+        aria-labelledBy={`datalist-${datalistId}`}
         ref={datalistRef}
         options={options}
         id={`datalist-${datalistId}`} 
         updateValue={updateValue}
         role="listbox"
         reveal={isFocused}
-        aria-expanded={isFocused}
+        expanded={isFocused}
      />
     </QuestionWrapper>
   );

@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import CoughForm from '../CoughForm/CoughForm';
+import CoughForm from '../form/CoughForm/CoughForm';
 
 function App() {
   return (

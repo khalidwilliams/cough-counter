@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import FormLabel from '../StyledComponents/FormLabel';
+import QuestionWrapper from '../StyledComponents/QuestionWrapper';
 
 const RadioInput = ({heading, name, options, changeHandler}) => {
 
@@ -11,7 +13,7 @@ const RadioInput = ({heading, name, options, changeHandler}) => {
     const checked = lessThanTwoChecked && option.checked ? {defaultChecked: true} : {}; 
     return  (
       <div key={index} className="radio-container">
-        <label htmlFor={`${name}-${option.label}`}>{option.label}</label>
+        <FormLabel htmlFor={`${name}-${option.label}`}>{option.label}</FormLabel>
         <input 
           type="radio" 
           name={name} 
@@ -28,13 +30,12 @@ const RadioInput = ({heading, name, options, changeHandler}) => {
   };
 
   return (
-    <div 
-      className="question-wrapper"
+    <QuestionWrapper 
       onChange={(event) => {changeListener(event)}}
     >
       <h3>{heading}</h3>
       {radioOptions}
-    </div>
+    </QuestionWrapper>
   );
 };
 

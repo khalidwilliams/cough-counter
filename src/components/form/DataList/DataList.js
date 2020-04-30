@@ -33,6 +33,7 @@ const DataList = forwardRef((props, ref) => {
     ref={ref}
     reveal={props.reveal}
     role="listbox"
+    aria-expanded={props.reveal}
   >
     {selectableOptions}
   </StyledDataList>

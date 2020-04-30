@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import RadioInput from '../RadioInput/RadioInput';
 import SelectBox from '../SelectBox/SelectBox';
+import StyledFormContainer from '../StyledComponents/StyledForm';
 
 class CoughForm extends Component {
   constructor() {
@@ -35,7 +36,7 @@ class CoughForm extends Component {
 
   render() {
     return (
-      <>
+      <StyledFormContainer>
         <h2 id="new-cough-label">New Cough</h2>
         <form aria-labelledby="new-cough-label">
           <RadioInput 
@@ -68,7 +69,7 @@ class CoughForm extends Component {
           />
           <button type="submit">Add Cough</button>
         </form>
-      </>
+      </StyledFormContainer>
     );
   }
 }
