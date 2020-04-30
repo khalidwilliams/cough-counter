@@ -1,11 +1,12 @@
 import React from 'react';
 import './App.css';
 import CoughForm from '../form/CoughForm/CoughForm';
+import Banner from '../Banner/Banner';
 
 function App() {
   return (
     <>
-      <h1 className="banner">Cough Counter</h1>
+      <Banner />
       <CoughForm />
     </>
   );
