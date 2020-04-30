@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import DataList from '../DataList/DataList';
 import QuestionWrapper from '../StyledComponents/QuestionWrapper';
-import FormLabel from '../StyledComponents/FormLabel';
 
 const StyledComboBox = styled.input`
   width: 80%;
@@ -25,20 +24,6 @@ const SelectBox = ({ options, labelText }) => {
   const datalistId = Date.now();
 
   const datalistRef = React.useRef(null);
-
-  const selectableOptions = options.map(({value, text}, i) => (
-    <option 
-      value={value} 
-      key={i}
-      onMouseDown={() => {
-        updateValue(value)
-      }}
-      onClick={() => {
-        console.log(value)
-        updateValue(value)
-      }}
-    >{text}</option>
-  ));
 
   return (
     <QuestionWrapper className="question-wrapper">

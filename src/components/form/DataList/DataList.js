@@ -1,4 +1,4 @@
-import React, { useState, forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -39,5 +39,15 @@ const DataList = forwardRef((props, ref) => {
   </StyledDataList>
   );
 });
+
+DataList.propTypes = {
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      text: PropTypes.string,
+      value: PropTypes.string
+    })
+  ),
+  reveal: PropTypes.bool
+};
 
 export default DataList;
