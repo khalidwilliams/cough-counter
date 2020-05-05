@@ -5,7 +5,8 @@ class NavBar extends Component {
   constructor() {
     super();
     this.state = {
-      currentView: 'New Cough'
+      //    If I'm using Router eventually, I don't think I'll need this to be a controlled component - 5/4
+  //    currentView: 'New Cough'
     }
   }
 
