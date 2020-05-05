@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const StyledFormContainer = styled.article`
   display: flex;
   flex-direction: column;
-  
+  background-color: #fffcf7;
 
   > h2 {
     font: 2em "Nunito";

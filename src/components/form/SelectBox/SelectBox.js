@@ -7,7 +7,7 @@ import QuestionWrapper from '../StyledComponents/QuestionWrapper';
 const StyledComboBox = styled.input`
   width: 80%;
   height: 2em;
-  background-color: #FFFCF7;
+  background-color: #FFFFFB;
   font: 1em "Montserrat";
   box-shadow: none;
   border: 1px solid #B3B0AD;
@@ -29,7 +29,7 @@ const SelectBox = ({ options, labelText }) => {
     <QuestionWrapper className="question-wrapper">
       <h3 id={`datalist-${datalistId}`}>{labelText}</h3>
       <StyledComboBox 
-        aria-labelledBy={`datalist-${datalistId}`}
+        aria-labelledby={`datalist-${datalistId}`}
         id={`datalist-${datalistId}`} 
         role="combobox" 
         value={inputValue}
@@ -39,7 +39,7 @@ const SelectBox = ({ options, labelText }) => {
         onFocus={() => changeFocus(true)} 
         onBlur={() => changeFocus(false)}/>
       <DataList 
-        aria-labelledBy={`datalist-${datalistId}`}
+        aria-labelledby={`datalist-${datalistId}`}
         ref={datalistRef}
         options={options}
         id={`datalist-${datalistId}`} 
